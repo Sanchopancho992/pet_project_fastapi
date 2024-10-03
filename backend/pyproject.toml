@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "backend-fastapi"
+version = "0.1.0"
+description = ""
+authors = ["Amir <buytthewayis@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.115.0"
+uvicorn = {extras = ["standard"], version = "^0.31.0"}
+pre-commit = "^3.8.0"
+pydantic-settings = "^2.5.2"
+motor = "^3.6.0"
+motor-types = "^1.0.0b4"
+makelint = "^0.1.0"
+pylint = "^3.3.1"
+
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.6.8"
+mypy = "^1.11.2"
+pre-commit = "^3.8.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
