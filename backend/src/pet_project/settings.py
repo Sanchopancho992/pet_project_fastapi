@@ -14,6 +14,7 @@ class Settings(BaseSettings):
 
     MONGO_DB_URL: str
     MONGO_DB_DB: str
+    ALLOWED_ORIGINS: list[str]
 
     class Config:  # pylint: disable=too-few-public-methods
         """

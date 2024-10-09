@@ -8,7 +8,7 @@ from fastapi import FastAPI
 from .db.utils import get_mongodb_client
 from .api.views import router as api_router
 from .pet_project.settings import settings
-
+from fastapi.middleware.cors import CORSMiddleware
 
 @asynccontextmanager
 async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
@@ -25,7 +25,13 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
 
 app = FastAPI(lifespan=lifespan)
 app.include_router(api_router)
-
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=settings.ALLOWED_ORIGINS,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 async def read_root() -> dict[str, str]:
